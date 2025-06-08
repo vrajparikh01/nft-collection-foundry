@@ -48,19 +48,30 @@ $ anvil
 ### Deploy
 
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+$ forge script script/DeployBasicNft.s.sol
+$ forge script script/DeployMoodNft.s.sol
 ```
 
-### Cast
+## Base64
 
-```shell
-$ cast <subcommand>
+To get the base64 of an image, you can use the following command:
+
+```
+echo "data:image/svg+xml;base64,$(base64 -i ./images/happy.svg)"
 ```
 
-### Help
+Then, you can get the base64 encoding of the json object by placing the imageURI into `happy_image_uri.json` then running:
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
 ```
+echo "data:application/json;base64,$(base64 -i ./images/happy_image_uri.json)"
+```
+
+## Estimate gas
+
+You can estimate how much gas things cost by running:
+
+```
+forge snapshot
+```
+
+And you'll see and output file called `.gas-snapshot`
